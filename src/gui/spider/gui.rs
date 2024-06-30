@@ -326,7 +326,7 @@ impl SpiderWindow {
                     row.col(|ui| _ = ui.label(self.display.format(result.last_value)));
 
                     let mut address = address;
-                    let mut buf = [0; 8];
+                    let mut buf = [0; 4];
                     for offset in result.parent_offsets.iter() {
                         process.read(address + offset, &mut buf[..]);
                         address = usize::from_ne_bytes(buf);

@@ -145,9 +145,11 @@ impl<const N: usize> HexField<N> {
         buf: &[u8; N],
         response: &mut Option<FieldResponse>,
     ) {
-        if N != 8 {
+        if N != 4 {
             return;
         }
+
+        
 
         let address = usize::from_ne_bytes(buf[..].try_into().unwrap());
         if ctx.process.can_read(address) {

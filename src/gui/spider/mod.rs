@@ -64,7 +64,7 @@ impl SearchResult {
         filter: FilterMode,
         new_value: Value,
     ) -> bool {
-        let mut buf = [0; 8];
+        let mut buf = [0; 4];
 
         for offset in self.parent_offsets.iter() {
             p.read(address.saturating_add(*offset), &mut buf[..]);
@@ -92,7 +92,7 @@ impl SearchResult {
     }
 }
 
-fn bytes_to_value(arr: &[u8; 8], kind: FieldKind) -> Value {
+fn bytes_to_value(arr: &[u8; 4], kind: FieldKind) -> Value {
     macro_rules! into_value {
         ($s:ident, $type:ty) => {
             <$type>::from_ne_bytes(arr[..std::mem::size_of::<$type>()].try_into().unwrap()).into()

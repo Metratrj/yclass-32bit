@@ -3,8 +3,8 @@
 #[cfg(all(not(unix), not(windows)))]
 compile_error!("Only UNIX and Windows platforms are supported.");
 
-#[cfg(not(target_pointer_width = "64"))]
-compile_error!("Only X64 targets are supported.");
+//#[cfg(not(target_pointer_width = "64"))]
+//compile_error!("Only X64 targets are supported.");
 
 mod address;
 mod app;

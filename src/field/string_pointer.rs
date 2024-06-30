@@ -35,7 +35,7 @@ impl Field for StringPointerField {
 
     fn size(&self) -> usize {
         // TODO: The size of the pointer would be 4 bytes on x86
-        8
+        4
     }
 
     fn kind(&self) -> super::FieldKind {
@@ -48,7 +48,7 @@ impl Field for StringPointerField {
         ctx: &mut crate::context::InspectionContext,
     ) -> Option<super::FieldResponse> {
         // TODO: The size of the pointer would be 4 bytes on x86
-        let mut buf = [0; 8];
+        let mut buf = [0; 4];
         ctx.process.read(ctx.address + ctx.offset, &mut buf);
         let address = usize::from_ne_bytes(buf);
 

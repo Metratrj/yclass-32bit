@@ -40,9 +40,9 @@ impl FieldKind {
         match self {
             Self::Unk8 | Self::I8 | Self::U8 | Self::Bool => 1,
             Self::Unk16 | Self::I16 | Self::U16 => 2,
-            Self::Unk32 | Self::I32 | Self::U32 | Self::F32 => 4,
+            Self::Unk32 | Self::I32 | Self::U32 | Self::F32 | Self::Ptr | Self::StrPtr => 4,
             // TODO(ItsEthra): Pointer size is... sigh, different for 32-bit processes
-            Self::Unk64 | Self::I64 | Self::U64 | Self::F64 | Self::Ptr | Self::StrPtr => 8,
+            Self::Unk64 | Self::I64 | Self::U64 | Self::F64 => 8,
         }
     }
 

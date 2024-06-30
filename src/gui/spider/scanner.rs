@@ -86,10 +86,10 @@ fn recursive_first_search(
         };
 
     for address in (start..start + opts.struct_size).step_by(opts.alignment) {
-        let mut buf = [0; 8];
+        let mut buf = [0; 4];
         process.read().as_ref().unwrap().read(address, &mut buf[..]);
 
-        if address % 8 == 0
+        if address % 4 == 0 // unclear if 8 or 4 byte
             && process
                 .read()
                 .as_ref()

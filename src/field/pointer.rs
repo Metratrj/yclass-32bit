@@ -178,7 +178,7 @@ impl Field for PointerField {
         // TODO(ItsEthra): When inspecting 32-bit processes
         // size of the pointer would be `4`. But I am not sure
         // if the rest of this app isn't break in this case lol.
-        8
+        4
     }
 
     fn name(&self) -> Option<String> {
@@ -193,7 +193,7 @@ impl Field for PointerField {
         let mut response = None;
 
         // TODO(ItsEthra): Again, pointer size differs in 32-bit processes.
-        let mut buf = [0; 8];
+        let mut buf = [0; 4];
         ctx.process.read(ctx.address + ctx.offset, &mut buf);
         let address = usize::from_ne_bytes(buf);
 
