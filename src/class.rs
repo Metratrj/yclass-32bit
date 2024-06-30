@@ -15,7 +15,7 @@ impl Class {
         Self {
             id,
             name,
-            fields: repeat_with(|| Box::new(HexField::<8>::new()) as Box<dyn Field>)
+            fields: repeat_with(|| Box::new(HexField::<4>::new()) as Box<dyn Field>)
                 .take(10)
                 .collect(),
             address: 0.into(),

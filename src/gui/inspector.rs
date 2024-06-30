@@ -109,7 +109,7 @@ impl InspectorPanel {
             .enable_scrolling(self.allow_scroll)
             .show(ui, |ui| {
                 match class.fields.iter().fold(None, |r, f| {
-                    ctx.current_id = Id::new(rng.u64(..));
+                    ctx.current_id = Id::new(rng.u32(..));
                     r.or(f.draw(ui, &mut ctx))
                 }) {
                     Some(FieldResponse::NewClass(name, id)) => new_class = Some((name, id)),

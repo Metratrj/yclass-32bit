@@ -15,7 +15,7 @@ pub fn display_field_prelude(
     job.append(&format!("{:04X}", ctx.offset), 0., {
         let mut tf = create_text_format(ctx.is_selected(field.id()), Color32::KHAKI);
         // Highlight unaligned fields
-        if ctx.offset % 8 != 0 {
+        if ctx.offset % 4 != 0 {
             tf.underline = Stroke::new(1., Color32::RED);
         }
 
@@ -183,10 +183,10 @@ pub fn display_field_name(
 pub fn allocate_padding(mut n: usize) -> Vec<Box<dyn Field>> {
     let mut fields = vec![];
 
-    while n >= 8 {
+    /* while n >= 8 {
         fields.push(Box::new(HexField::<8>::new()) as _);
         n -= 8;
-    }
+    } */
 
     while n >= 4 {
         fields.push(Box::new(HexField::<4>::new()) as _);

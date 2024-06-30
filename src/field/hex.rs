@@ -19,7 +19,7 @@ struct PreviewState {
 
 thread_local! {
     static PREVIEW_FIELDS: Lazy<Vec<Box<dyn Field>>> = Lazy::new(|| {
-        repeat_with(|| Box::new(HexField::<8>::new()) as Box<dyn Field>)
+        repeat_with(|| Box::new(HexField::<4>::new()) as Box<dyn Field>)
             .take(20)
             .collect()
     });

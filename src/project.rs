@@ -144,11 +144,11 @@ impl ProjectData {
                 current_offset = field_offset + kind.size();
             }
 
-            if current_offset % 8 != 0 {
+            if current_offset % 4 != 0 {
                 list.by_id_mut(cid)
                     .unwrap()
                     .fields
-                    .extend(allocate_padding(8 - (current_offset % 8)));
+                    .extend(allocate_padding(4 - (current_offset % 4)));
             }
         });
 
